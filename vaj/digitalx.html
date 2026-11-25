@@ -120,9 +120,9 @@ async function load(){
  try{
   const stamp=Date.now();
   const [a,b]=await Promise.all([
-   fetch(`data/${selected}_VAJ_1m.csv?t=${stamp}`,
+   fetch(`https://d251mfkhswowwo.cloudfront.net/${selected}_VAJ_1m.csv?t=${stamp}`,
     {cache:"no-store"}),
-   fetch(`data/${selected}_fills.csv?t=${stamp}`,
+   fetch(`https://d251mfkhswowwo.cloudfront.net/${selected}_fills.csv?t=${stamp}`,
     {cache:"no-store"})
   ]);
   if(!a.ok||!b.ok)throw Error("CSV 조회 실패");
