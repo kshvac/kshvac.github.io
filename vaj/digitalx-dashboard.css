@@ -1,0 +1,79 @@
+:root {
+  color-scheme: dark;
+  --bg: #101821; --card: #17222f; --edge: #293848;
+  --ink: #eef4fa; --muted: #a8bbcc; --sub: #91a8be;
+  --brand: #6cd6c2; --buy: #ff827e; --sell: #83b8ff;
+  font: 16px/1.5 "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif;
+  background: var(--bg); color: var(--ink);
+}
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; min-width: 320px; }
+main { width: min(100% - 36px, 1300px); margin: 0 auto; padding: 26px 0 15px; }
+h1, h2, p { margin: 0; }
+h1 { font-size: clamp(1.4rem, 3vw, 2.04rem); letter-spacing: -.055em; line-height: 1.15; }
+h2 { font-size: 1.06rem; font-weight: 740; letter-spacing: -.025em; }
+button, input { font: inherit; }
+button { color: inherit; cursor: pointer; }
+button:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; }
+a { color: #9de3da; text-underline-offset: 3px; }
+.header, .panel-title, .identity { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.header { margin-bottom: 15px; }
+.identity { justify-content: flex-start; }
+.identity p, .panel-title p { color: var(--muted); font-size: .86rem; margin-top: 4px; }
+.logo { border-radius: 11px; width: 45px; height: 45px; background: #23413e; border: 1px solid #375a53; display: flex; align-items: end; justify-content: center; gap: 3px; padding-bottom: 11px; flex: none; }
+.logo i { width: 4px; border-radius: 2px 2px 0 0; background: var(--brand); height: 10px; }
+.logo i:nth-child(2) { height: 17px; }.logo i:nth-child(3) { height: 13px; }.logo i:nth-child(4) { height: 23px; }
+.refresh { padding: 7px 12px; min-height: 38px; border: 1px solid var(--edge); border-radius: 8px; background: #233142; white-space: nowrap; font-size: .86rem; font-weight: 650; }
+.refresh:hover, .group button:hover { background: #2d3e50; }
+.status { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding: 7px 10px; background: #1a2d35; color: #c2ddd9; border: 1px solid #2b454c; border-radius: 8px; font-size: .86rem; }
+.status.warn { color: #f5d799; background: #342b22; border-color: #554432; }
+.lamp { width: 7px; height: 7px; border-radius: 50%; background: var(--brand); flex: none; }
+.warn .lamp { background: #f4bc64; }
+.source-note { min-height: 21px; margin-top: 4px; color: var(--sub); font-size: .78rem; }
+.source-note.warn { color: #f5ca83; }
+.toolbar, .picker { display: flex; align-items: center; flex-wrap: wrap; gap: 9px; }
+.toolbar { gap: 12px 24px; margin: 6px 0 13px; }
+.picker > span { color: var(--muted); font-size: .84rem; font-weight: 650; }
+.group { display: flex; gap: 2px; align-items: center; padding: 3px; border: 1px solid var(--edge); background: #121d28; border-radius: 8px; }
+.group button { min-height: 30px; border: 0; background: transparent; color: var(--muted); font-size: .85rem; font-weight: 650; padding: 4px 9px; border-radius: 5px; white-space: nowrap; }
+.group button[aria-pressed="true"] { background: #2c4546; color: #d5fff3; }
+.metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-bottom: 12px; }
+.metric, .panel { min-width: 0; border: 1px solid var(--edge); border-radius: 12px; background: var(--card); }
+.metric { min-height: 73px; padding: 8px 12px 9px; }
+.metric small { color: var(--muted); font-size: .82rem; }
+.metric strong { display: block; margin: 1px 0 0; font: 720 clamp(.97rem, 2.3vw, 1.45rem)/1.3 ui-monospace, Consolas, monospace; font-variant-numeric: tabular-nums; letter-spacing: -.025em; overflow-wrap: anywhere; }
+.charts { display: grid; gap: 11px; }
+.panel-title { justify-content: space-between; flex-wrap: wrap; padding: 11px 13px 8px; }
+.panel-title p { font-size: .79rem; }
+.plot { position: relative; margin: 1px 10px 3px 2px; }
+.price-plot { height: 268px; }.indicator-plot { height: 178px; }
+.plot canvas { display: block; width: 100%; height: 100%; }
+.empty { position: absolute; top: 42%; left: 9%; right: 6%; color: var(--muted); text-align: center; font-size: .9rem; }
+.markers, .legend { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 13px; }
+.markers label { display: inline-flex; white-space: nowrap; align-items: center; gap: 4px; color: var(--muted); font-size: .82rem; cursor: pointer; }
+.markers input { accent-color: #5ebdaa; margin: 0; }
+.buy span, .event.buy { color: var(--buy); }.sell span, .event.sell { color: var(--sell); }
+.legend { min-height: 30px; margin: 0 12px 7px; color: var(--muted); font-size: .76rem; }
+.legend > span { display: inline-flex; align-items: center; gap: 5px; }
+.legend i { display: inline-block; width: 17px; border-top: 2px solid var(--sub); }
+.legend i.dash { border-top-style: dashed; }.legend i.live { border-top: 2px dotted var(--brand); }
+.events { margin-top: 11px; }
+.badge { color: var(--muted); border: 1px solid var(--edge); border-radius: 5px; padding: 2px 7px; font-size: .78rem; }
+.event-list { display: flex; gap: 5px; flex-wrap: wrap; padding: 1px 12px 11px; }
+.event { border: 1px solid var(--edge); background: #131f2b; border-radius: 6px; padding: 5px 8px; font-size: .78rem; white-space: nowrap; }
+.event:hover, .event[aria-pressed="true"] { background: #2b3f51; }
+.event.signal { border-style: dashed; }
+.event-empty { color: var(--muted); font-size: .85rem; }
+footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px; margin-top: 13px; color: var(--muted); font-size: .77rem; }
+@media(max-width: 650px) {
+  main { width: calc(100% - 20px); padding-top: 14px; }
+  .header, .identity { gap: 6px; }.header { margin-bottom: 10px; }
+  .identity p { font-size: .74rem; }.logo { width: 31px; height: 34px; gap: 2px; padding-bottom: 5px; }
+  .logo i { width: 3px; }.refresh { min-height: 34px; padding: 4px 7px; font-size: .74rem; }
+  .toolbar { gap: 7px 12px; }
+  .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  .metric { min-height: 54px; padding: 5px 8px; }
+  .price-plot { height: 220px; }.indicator-plot { height: 155px; }
+  .panel-title { padding: 8px 9px; }.group button { padding-inline: 7px; }
+}
